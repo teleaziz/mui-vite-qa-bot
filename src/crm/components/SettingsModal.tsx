@@ -22,11 +22,21 @@ export default function SettingsModal({ open, onClose }: SettingsModalProps) {
       PaperProps={{
         sx: {
           borderRadius: 2,
-          bgcolor: "background.paper",
+          bgcolor: "background.default",
+          backgroundImage: "none",
         },
       }}
     >
-      <DialogTitle sx={{ m: 0, p: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <DialogTitle
+        sx={{
+          m: 0,
+          p: 2,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          bgcolor: "background.default",
+        }}
+      >
         Settings
         <IconButton
           aria-label="close"
@@ -38,7 +48,14 @@ export default function SettingsModal({ open, onClose }: SettingsModalProps) {
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-      <DialogContent dividers sx={{ p: 0 }}>
+      <DialogContent
+        dividers
+        sx={{
+          p: 0,
+          bgcolor: "background.default",
+          borderColor: "divider",
+        }}
+      >
         <Settings isModal />
       </DialogContent>
     </Dialog>
