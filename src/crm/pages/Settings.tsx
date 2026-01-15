@@ -13,14 +13,24 @@ import {
   Avatar,
   Stack,
   Chip,
+  MenuItem,
+  useTheme,
 } from "@mui/material";
 import { Person, Notifications, Security, Palette } from "@mui/icons-material";
 
 export default function Settings({ isModal = false }: { isModal?: boolean }) {
+  const theme = useTheme();
   const [emailNotifications, setEmailNotifications] = React.useState(true);
   const [pushNotifications, setPushNotifications] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
   const [autoSave, setAutoSave] = React.useState(true);
+
+  // Card styling that adapts to light/dark mode
+  const cardSx = {
+    height: "100%",
+    bgcolor: theme.palette.mode === 'dark' ? 'grey.900' : 'background.paper',
+    backgroundImage: 'none',
+  };
 
   return (
     <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1200px" }, p: isModal ? 3 : 2 }}>
@@ -33,7 +43,7 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
       <Grid container spacing={3}>
         {/* Profile Settings */}
         <Grid item xs={12} md={6}>
-          <Card sx={{ height: "100%" }}>
+          <Card sx={cardSx}>
             <CardContent>
               <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
                 <Person color="primary" />
@@ -89,7 +99,7 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
 
         {/* Notification Settings */}
         <Grid item xs={12} md={6}>
-          <Card sx={{ height: "100%" }}>
+          <Card sx={cardSx}>
             <CardContent>
               <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
                 <Notifications color="primary" />
@@ -138,7 +148,7 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
 
         {/* Preferences */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={cardSx}>
             <CardContent>
               <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
                 <Palette color="primary" />
@@ -174,14 +184,11 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
                   defaultValue="UTC-8"
                   variant="outlined"
                   fullWidth
-                  SelectProps={{
-                    native: true,
-                  }}
                 >
-                  <option value="UTC-8">Pacific Time (UTC-8)</option>
-                  <option value="UTC-5">Eastern Time (UTC-5)</option>
-                  <option value="UTC+0">GMT (UTC+0)</option>
-                  <option value="UTC+1">Central European Time (UTC+1)</option>
+                  <MenuItem value="UTC-8">Pacific Time (UTC-8)</MenuItem>
+                  <MenuItem value="UTC-5">Eastern Time (UTC-5)</MenuItem>
+                  <MenuItem value="UTC+0">GMT (UTC+0)</MenuItem>
+                  <MenuItem value="UTC+1">Central European Time (UTC+1)</MenuItem>
                 </TextField>
 
                 <TextField
@@ -190,14 +197,11 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
                   defaultValue="en"
                   variant="outlined"
                   fullWidth
-                  SelectProps={{
-                    native: true,
-                  }}
                 >
-                  <option value="en">English</option>
-                  <option value="es">Spanish</option>
-                  <option value="fr">French</option>
-                  <option value="de">German</option>
+                  <MenuItem value="en">English</MenuItem>
+                  <MenuItem value="es">Spanish</MenuItem>
+                  <MenuItem value="fr">French</MenuItem>
+                  <MenuItem value="de">German</MenuItem>
                 </TextField>
               </Stack>
             </CardContent>
@@ -206,7 +210,7 @@ export default function Settings({ isModal = false }: { isModal?: boolean }) {
 
         {/* Security Settings */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={cardSx}>
             <CardContent>
               <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
                 <Security color="primary" />
