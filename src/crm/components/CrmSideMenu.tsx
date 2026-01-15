@@ -24,7 +24,11 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
-export default function CrmSideMenu() {
+export default function CrmSideMenu({
+  onSettingsOpen,
+}: {
+  onSettingsOpen: () => void;
+}) {
   return (
     <Drawer
       variant="permanent"
@@ -53,7 +57,7 @@ export default function CrmSideMenu() {
           flexDirection: "column",
         }}
       >
-        <CrmMenuContent />
+        <CrmMenuContent onSettingsOpen={onSettingsOpen} />
       </Box>
       <Stack
         direction="row"
