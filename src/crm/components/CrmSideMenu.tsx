@@ -88,7 +88,7 @@ export default function CrmSideMenu({
             alex@acmecrm.com
           </Typography>
         </Box>
-        <CrmOptionsMenu />
+        <CrmOptionsMenu onSettingsOpen={onSettingsOpen} />
       </Stack>
     </Drawer>
   );
