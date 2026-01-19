@@ -42,7 +42,7 @@ export default function CrmDashboard() {
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex", height: "100vh" }}>
         <CrmSideMenu onSettingsOpen={() => setSettingsOpen(true)} />
-        <CrmAppNavbar onSettingsOpen={() => setSettingsOpen(true)} />
+        <CrmAppNavbar onSettingsOpen={() => setSettingsOpen(false)} />
         {/* Main content */}
         <Box
           component="main"
