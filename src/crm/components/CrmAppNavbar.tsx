@@ -8,6 +8,7 @@ import { tabsClasses } from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
+import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import CrmSideMenuMobile from "./CrmSideMenuMobile";
 import MenuButton from "../../dashboard/components/MenuButton";
 import ColorModeIconDropdown from "../../shared-theme/ColorModeIconDropdown";
@@ -28,7 +29,11 @@ const Toolbar = styled(MuiToolbar)({
   },
 });
 
-export default function CrmAppNavbar() {
+export default function CrmAppNavbar({
+  onSettingsOpen,
+}: {
+  onSettingsOpen: () => void;
+}) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -72,6 +77,9 @@ export default function CrmAppNavbar() {
               Acme CRM
             </Typography>
           </Stack>
+          <MenuButton aria-label="Open settings" onClick={onSettingsOpen}>
+            <SettingsRoundedIcon />
+          </MenuButton>
           <ColorModeIconDropdown />
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
             <MenuRoundedIcon />
