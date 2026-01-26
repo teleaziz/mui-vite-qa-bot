@@ -16,17 +16,19 @@ import {
 } from "@mui/material";
 import { Person, Notifications, Security, Palette } from "@mui/icons-material";
 
-export default function Settings() {
+export default function Settings({ isModal = false }: { isModal?: boolean }) {
   const [emailNotifications, setEmailNotifications] = React.useState(true);
   const [pushNotifications, setPushNotifications] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
   const [autoSave, setAutoSave] = React.useState(true);
 
   return (
-    <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1200px" }, p: 2 }}>
-      <Typography variant="h4" component="h1" sx={{ mb: 4, fontWeight: 600 }}>
-        Account Settings
-      </Typography>
+    <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1200px" }, p: isModal ? 3 : 2 }}>
+      {!isModal && (
+        <Typography variant="h4" component="h1" sx={{ mb: 4, fontWeight: 600 }}>
+          Account Settings
+        </Typography>
+      )}
 
       <Grid container spacing={3}>
         {/* Profile Settings */}
