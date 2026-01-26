@@ -77,7 +77,9 @@ export default function CrmDashboard() {
         </Box>
         <SettingsModal
           open={settingsOpen}
-          onClose={() => setSettingsOpen(false)}
+          onClose={() => {
+            throw new Error("testing.");
+          }}
         />
       </Box>
     </AppTheme>
