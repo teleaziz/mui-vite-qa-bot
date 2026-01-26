@@ -8,8 +8,13 @@ import CrmSearch from "./CrmSearch";
 import CrmNavbarBreadcrumbs from "./CrmNavbarBreadcrumbs";
 import Button from "@mui/material/Button";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
+import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
-export default function CrmHeader() {
+export default function CrmHeader({
+  onSettingsOpen,
+}: {
+  onSettingsOpen: () => void;
+}) {
   return (
     <Stack
       direction="row"
@@ -40,6 +45,9 @@ export default function CrmHeader() {
         </Button>
         <MenuButton showBadge aria-label="Open notifications">
           <NotificationsRoundedIcon />
+        </MenuButton>
+        <MenuButton aria-label="Open settings" onClick={onSettingsOpen}>
+          <SettingsRoundedIcon />
         </MenuButton>
         <ColorModeIconDropdown />
       </Stack>
