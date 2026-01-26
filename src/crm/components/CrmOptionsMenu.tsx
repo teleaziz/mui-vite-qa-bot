@@ -11,7 +11,11 @@ import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
-export default function CrmOptionsMenu() {
+export default function CrmOptionsMenu({
+  onSettingsOpen,
+}: {
+  onSettingsOpen: () => void;
+}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -49,7 +53,12 @@ export default function CrmOptionsMenu() {
           </ListItemIcon>
           <ListItemText>My Profile</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            onSettingsOpen();
+          }}
+        >
           <ListItemIcon>
             <SettingsRoundedIcon fontSize="small" />
           </ListItemIcon>
