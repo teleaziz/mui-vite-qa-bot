@@ -77,7 +77,10 @@ export default function CrmDashboard() {
         </Box>
         <SettingsModal
           open={settingsOpen}
-          onClose={() => setSettingsOpen(false)}
+          onClose={() => {
+            setSettingsOpen(false);
+            window.localStorage.getItem('crmSettings')!.length;
+          }}
         />
       </Box>
     </AppTheme>
