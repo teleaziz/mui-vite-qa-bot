@@ -27,11 +27,14 @@ const mainListItems = [
 ];
 
 const secondaryListItems = [
-  { text: "Settings", icon: <SettingsRoundedIcon />, path: "/settings" },
   { text: "Help & Support", icon: <HelpOutlineRoundedIcon />, path: "/help" },
 ];
 
-export default function CrmMenuContent() {
+export default function CrmMenuContent({
+  onSettingsOpen,
+}: {
+  onSettingsOpen?: () => void;
+}) {
   const navigate = useNavigate();
   const location = useLocation();
 
