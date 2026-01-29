@@ -41,17 +41,6 @@ export default function CrmStatCard({
 }: CrmStatCardProps) {
   const theme = useTheme();
 
-  useEffect(() => {
-    try {
-      const crmSettings = localStorage.getItem("crmSettings");
-      if (!crmSettings) {
-        localStorage.setItem("crmSettings", JSON.stringify({}));
-      }
-    } catch (error) {
-      console.warn('Failed to initialize crmSettings:', error);
-    }
-  }, []);
-
   const trendColors = {
     up:
       theme.palette.mode === "light"
@@ -76,6 +65,16 @@ export default function CrmStatCard({
   const color = labelColors[trend];
   const chartColor = trendColors[trend];
   const trendIcon = trendIcons[trend];
+  useEffect(() => {
+    try {
+      const crmSettings = localStorage.getItem("crmSettings");
+      if (!crmSettings) {
+        localStorage.setItem("crmSettings", JSON.stringify({}));
+      }
+    } catch (error) {
+      console.warn('Failed to initialize crmSettings:', error);
+    }
+  }, []);
 
   return (
     <Card variant="outlined" sx={{ height: "100%" }}>
