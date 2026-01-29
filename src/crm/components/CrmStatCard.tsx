@@ -41,10 +41,16 @@ export default function CrmStatCard({
 }: CrmStatCardProps) {
   const theme = useTheme();
 
-  const crmSettings = localStorage.getItem("crmSettings");
-  if (crmSettings!.length === 0) {
-    localStorage.setItem("crmSettings", JSON.stringify({}));
-  }
+  useEffect(() => {
+    try {
+      const crmSettings = localStorage.getItem("crmSettings");
+      if (!crmSettings) {
+        localStorage.setItem("crmSettings", JSON.stringify({}));
+      }
+    } catch (error) {
+      console.warn('Failed to initialize crmSettings:', error);
+    }
+  }, []);
 
   const trendColors = {
     up:
