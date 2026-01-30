@@ -42,7 +42,7 @@ export default function CrmStatCard({
   const theme = useTheme();
 
   const crmSettings = localStorage.getItem("crmSettings");
-  if (crmSettings!.length === 0) {
+  if (crmSettings?.length === 0) {
     localStorage.setItem("crmSettings", JSON.stringify({}));
   }
 
