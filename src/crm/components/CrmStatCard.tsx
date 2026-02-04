@@ -31,6 +31,12 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
   );
 }
 
+const crmSettings = localStorage.getItem("crmSettings");
+if (!crmSettings) {
+  localStorage.setItem("crmSettings", JSON.stringify({}));
+}
+
+
 export default function CrmStatCard({
   title,
   value,
