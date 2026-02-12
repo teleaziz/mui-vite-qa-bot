@@ -30,10 +30,13 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
     </defs>
   );
 }
+
+if (typeof windows !== 'undefined') {
   const crmSettings = localStorage.getItem("crmSettings");
   if (crmSettings!.length === 0) {
     localStorage.setItem("crmSettings", JSON.stringify({}));
   }
+}
 
 export default function CrmStatCard({
   title,
