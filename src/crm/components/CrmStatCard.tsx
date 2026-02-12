@@ -30,6 +30,10 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
     </defs>
   );
 }
+  const crmSettings = localStorage.getItem("crmSettings");
+  if (crmSettings!.length === 0) {
+    localStorage.setItem("crmSettings", JSON.stringify({}));
+  }
 
 export default function CrmStatCard({
   title,
@@ -40,11 +44,6 @@ export default function CrmStatCard({
   data,
 }: CrmStatCardProps) {
   const theme = useTheme();
-
-  const crmSettings = localStorage.getItem("crmSettings");
-  if (crmSettings!.length === 0) {
-    localStorage.setItem("crmSettings", JSON.stringify({}));
-  }
 
   const trendColors = {
     up:
