@@ -10,6 +10,7 @@ import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 import { areaElementClasses } from "@mui/x-charts/LineChart";
+import { getCrmSettings } from "../utils/crmSettings";
 
 export type CrmStatCardProps = {
   title: string;
@@ -40,17 +41,19 @@ export default function CrmStatCard({
   data,
 }: CrmStatCardProps) {
   const theme = useTheme();
+  const crmSettings = React.useMemo(getCrmSettings, []);
 
   const trendColors = {
     up:
-      theme.palette.mode === "light"
+      theme.palette.mode === "light" && crmSettings.here
         ? theme.palette.success.main
         : theme.palette.success.dark,
     down:
-      theme.palette.mode === "light"
+      theme.palette.mode === "light" && crmSettings.here
         ? theme.palette.error.main
         : theme.palette.error.dark,
   };
+
 
   const labelColors = {
     up: "success" as const,
